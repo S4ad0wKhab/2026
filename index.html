@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ปฏิทินไทย พ.ศ. ๒๕๖๙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&family=Noto+Serif+Thai:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --gold: #c8a84b;
+      --gold-light: #e8cc7a;
+      --navy: #1a2744;
+      --navy-mid: #243460;
+      --sunday: #c0392b;
+      --saturday: #1a5276;
+      --hol-color: #7d1e1e;
+      --intl-color: #1a6b9a;
+      --shadow: 0 8px 32px rgba(26,39,68,0.18);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background: var(--navy);
+      min-height: 100vh; color: #1a1a2e; overflow-x: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(200,168,75,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 90%, rgba(200,168,75,0.10) 0%, transparent 50%),
+        linear-gradient(160deg, #0f1c38 0%, #1a2744 40%, #0d1828 100%);
+      z-index: 0;
+    }
+    body::after {
+      content: ''; position: fixed; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(200,168,75,0.03) 60px, rgba(200,168,75,0.03) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(200,168,75,0.03) 60px, rgba(200,168,75,0.03) 61px);
+      z-index: 0;
+    }
+    .wrapper {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto; padding: 32px 16px 60px;
+    }
+
+    /* HEADER */
+    header { text-align: center; padding: 40px 0 36px; }
+    .header-ornament {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-bottom: 12px;
+    }
+    .ornament-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      max-width: 200px;
+    }
+    .ornament-diamond { width: 10px; height: 10px; background: var(--gold); transform: rotate(45deg); }
+    .header-sub { font-size: .95rem; letter-spacing: .25em; color: var(--gold-light); margin-bottom: 8px; }
+    h1 {
+      font-family: 'Noto Serif Thai', serif;
+      font-size: clamp(2.2rem,6vw,4rem); font-weight: 900; color: var(--gold);
+      text-shadow: 0 0 40px rgba(200,168,75,.4), 0 2px 4px rgba(0,0,0,.5);
+      letter-spacing: .04em; line-height: 1.1;
+    }
+    .header-year-en { font-size: .85rem; color: rgba(200,168,75,.55); letter-spacing: .2em; margin-top: 6px; }
+
+    /* LEGEND */
+    .legend {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 14px;
+      margin: 0 0 36px; padding: 14px 24px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(200,168,75,.18);
+      border-radius: 40px; backdrop-filter: blur(8px);
+    }
+    .legend-item { display: flex; align-items: center; gap: 7px; font-size: .8rem; color: rgba(255,255,255,.8); }
+    .leg-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .leg-sun  { background: var(--sunday); }
+    .leg-sat  { background: var(--saturday); }
+    .leg-hol  { background: #c0a030; }
+    .leg-intl { background: var(--intl-color); }
+    .leg-today {
+      width: 20px; height: 20px; background: var(--gold); border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: .58rem; color: #fff; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* CALENDAR GRID */
+    .calendar-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 24px; }
+
+    /* MONTH CARD */
+    .month-card {
+      background: rgba(253,248,239,.97); border-radius: 16px; overflow: visible;
+      box-shadow: var(--shadow), 0 0 0 1px rgba(200,168,75,.25);
+      transition: transform .22s ease, box-shadow .22s ease;
+      animation: fadeUp .5s ease both;
+    }
+    .month-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(26,39,68,.3), 0 0 0 1px rgba(200,168,75,.4); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    .month-card:nth-child(1) {animation-delay:.05s} .month-card:nth-child(2) {animation-delay:.10s}
+    .month-card:nth-child(3) {animation-delay:.15s} .month-card:nth-child(4) {animation-delay:.20s}
+    .month-card:nth-child(5) {animation-delay:.25s} .month-card:nth-child(6) {animation-delay:.30s}
+    .month-card:nth-child(7) {animation-delay:.35s} .month-card:nth-child(8) {animation-delay:.40s}
+    .month-card:nth-child(9) {animation-delay:.45s} .month-card:nth-child(10){animation-delay:.50s}
+    .month-card:nth-child(11){animation-delay:.55s} .month-card:nth-child(12){animation-delay:.60s}
+
+    .month-header {
+      background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy) 100%);
+      padding: 16px 20px 14px; border-bottom: 2px solid var(--gold);
+      position: relative; overflow: hidden; border-radius: 16px 16px 0 0;
+    }
+    .month-header::before {
+      content: ''; position: absolute; right: -20px; top: -20px;
+      width: 80px; height: 80px; border-radius: 50%; background: rgba(200,168,75,.08);
+    }
+    .month-name-th { font-family:'Noto Serif Thai',serif; font-size:1.25rem; font-weight:700; color:var(--gold); line-height:1; }
+    .month-name-en { font-size:.72rem; color:rgba(200,168,75,.55); letter-spacing:.15em; margin-top:3px; }
+
+    /* DOW */
+    .dow-row { display:grid; grid-template-columns:repeat(7,1fr); background:rgba(26,39,68,.06); border-bottom:1px solid rgba(200,168,75,.15); }
+    .dow-cell { text-align:center; padding:7px 2px; font-size:.72rem; font-weight:600; letter-spacing:.05em; }
+    .dow-cell.sun { color:var(--sunday); } .dow-cell.sat { color:var(--saturday); } .dow-cell.wd { color:#555; }
+
+    /* DAYS */
+    .days-grid { display:grid; grid-template-columns:repeat(7,1fr); padding:8px; gap:3px; }
+
+    .day-cell {
+      position: relative; text-align: center;
+      padding: 4px 2px 4px; border-radius: 8px; cursor: default;
+      min-height: 62px; transition: background .15s;
+      display: flex; flex-direction: column; align-items: center;
+      overflow: visible;
+    }
+    .day-cell:hover { background: rgba(200,168,75,.1); z-index: 10; }
+
+    .day-num {
+      font-family:'Noto Serif Thai',serif; font-size:1rem; font-weight:600; line-height:1.7; display:block;
+    }
+    .day-cell.sun .day-num { color:var(--sunday); }
+    .day-cell.sat .day-num { color:var(--saturday); }
+    .day-cell.wd  .day-num { color:#1a1a2e; }
+    .day-cell.today .day-num {
+      background:var(--gold); color:#fff !important; border-radius:50%;
+      width:28px; height:28px; display:inline-flex; align-items:center; justify-content:center;
+      font-size:.9rem; box-shadow:0 2px 8px rgba(200,168,75,.5);
+    }
+
+    .lbl-hol {
+      font-size:.41rem; color:var(--hol-color); font-weight:700; line-height:1.3;
+      width:100%; text-align:center;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 2px;
+    }
+    .lbl-intl {
+      font-size:.39rem; color:var(--intl-color); font-weight:600; line-height:1.3;
+      width:100%; text-align:center;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis; padding:0 2px;
+    }
+
+    /* Backgrounds */
+    .day-cell.is-hol  { background:rgba(200,168,75,.09); }
+    .day-cell.is-intl { background:rgba(26,107,154,.06); }
+    .day-cell.is-both { background:rgba(200,168,75,.12); }
+
+    /* Corner dots */
+    .day-cell.is-hol::after, .day-cell.is-both::after {
+      content:''; position:absolute; top:4px; right:4px;
+      width:5px; height:5px; background:var(--gold); border-radius:50%;
+    }
+    .day-cell.is-intl::before, .day-cell.is-both::before {
+      content:''; position:absolute; top:4px; left:4px;
+      width:5px; height:5px; background:var(--intl-color); border-radius:50%;
+    }
+
+    /* TOOLTIP */
+    .tip {
+      display:none; position:absolute;
+      bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+      background:#1a2744; color:#fff; font-size:.72rem;
+      padding:8px 12px; border-radius:10px;
+      border:1px solid rgba(200,168,75,.35);
+      box-shadow:0 6px 20px rgba(0,0,0,.4);
+      z-index:300; min-width:140px; max-width:210px;
+      text-align:left; line-height:1.8; pointer-events:none; white-space:normal;
+    }
+    .tip .th  { color:#f0c860; font-weight:700; }
+    .tip .int { color:#7ec8f0; font-weight:600; }
+    .day-cell:hover .tip { display:block; }
+
+    /* FOOTER */
+    footer {
+      text-align:center; margin-top:48px; padding-top:24px;
+      border-top:1px solid rgba(200,168,75,.2);
+      color:rgba(200,168,75,.4); font-size:.78rem; letter-spacing:.1em;
+    }
+    @media(max-width:640px){ .calendar-grid{grid-template-columns:1fr} h1{font-size:2rem} }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="header-ornament"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+    <div class="header-sub">ปฏิทินประจำปี</div>
+    <h1>พุทธศักราช ๒๕๖๙</h1>
+    <div class="header-year-en">Thai Calendar · B.E. 2569 · C.E. 2026</div>
+    <div class="header-ornament" style="margin-top:14px"><div class="ornament-line"></div><div class="ornament-diamond"></div><div class="ornament-line"></div></div>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item"><div class="leg-dot leg-sun"></div> วันอาทิตย์</div>
+    <div class="legend-item"><div class="leg-dot leg-sat"></div> วันเสาร์</div>
+    <div class="legend-item"><div class="leg-dot leg-hol"></div> วันหยุดราชการไทย 🇹🇭</div>
+    <div class="legend-item"><div class="leg-dot leg-intl"></div> วันสำคัญสากล 🌐</div>
+    <div class="legend-item"><div class="leg-today">28</div>&nbsp;วันนี้</div>
+  </div>
+
+  <div class="calendar-grid" id="calendarGrid"></div>
+
+  <footer>ปฏิทินไทย พ.ศ. ๒๕๖๙ &nbsp;·&nbsp; HTML / CSS / JavaScript &nbsp;·&nbsp; ใช้งานได้บน GitHub Pages</footer>
+</div>
+
+<script>
+const MONTH_TH = ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม','กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'];
+const MONTH_EN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DOW_TH   = ['อา','จ','อ','พ','พฤ','ศ','ส'];
+
+// วันหยุดราชการไทย พ.ศ. 2569
+const TH_HOL = {
+  '1-1':'วันขึ้นปีใหม่',
+  '2-10':'วันมาฆบูชา',
+  '4-6':'วันจักรี',
+  '4-13':'วันสงกรานต์',
+  '4-14':'วันสงกรานต์',
+  '4-15':'วันสงกรานต์',
+  '5-1':'วันแรงงานแห่งชาติ',
+  '5-4':'วันฉัตรมงคล',
+  '5-11':'วันวิสาขบูชา',
+  '6-3':'วันเฉลิมพระชนมพรรษา สมเด็จพระราชินี',
+  '7-9':'วันอาสาฬหบูชา',
+  '7-10':'วันเข้าพรรษา',
+  '7-28':'วันเฉลิมพระชนมพรรษา รัชกาลที่ ๑๐',
+  '8-12':'วันแม่แห่งชาติ',
+  '10-13':'วันคล้ายวันสวรรคต รัชกาลที่ ๙',
+  '10-23':'วันปิยมหาราช',
+  '12-5':'วันพ่อแห่งชาติ',
+  '12-10':'วันรัฐธรรมนูญ',
+  '12-31':'วันสิ้นปี'
+};
+
+// วันสำคัญสากล (UN / UNESCO / WHO / ฯลฯ)
+const INTL = {
+  '1-1':'วันขึ้นปีใหม่สากล',
+  '1-4':'วันสิ่งแวดล้อมโลก (UN)',
+  '1-24':'วันการศึกษาสากล (UNESCO)',
+  '1-27':'วันรำลึกเหยื่อฮอโลคอสต์',
+  '2-4':'วันมะเร็งโลก',
+  '2-11':'วันสตรีในวิทยาศาสตร์ (UN)',
+  '2-13':'วันวิทยุโลก (UNESCO)',
+  '2-20':'วันความยุติธรรมทางสังคมโลก',
+  '2-21':'วันภาษาแม่สากล (UNESCO)',
+  '3-3':'วันสัตว์ป่าโลก',
+  '3-8':'วันสตรีสากล',
+  '3-20':'วันความสุขสากล (UN)',
+  '3-21':'วันป่าไม้โลก / วันต่อต้านการเหยียดผิว',
+  '3-22':'วันน้ำโลก',
+  '3-23':'วันอุตุนิยมวิทยาโลก',
+  '3-24':'วันวัณโรคโลก',
+  '3-25':'วันรำลึกทาสและการค้าทาสสากล',
+  '4-2':'วันหนังสือเด็กนานาชาติ',
+  '4-4':'วันทุ่นระเบิดสากล',
+  '4-7':'วันอนามัยโลก (WHO)',
+  '4-22':'วันคุ้มครองโลก (Earth Day)',
+  '4-23':'วันหนังสือและลิขสิทธิ์โลก (UNESCO)',
+  '4-25':'วันมาลาเรียโลก',
+  '5-1':'วันแรงงานสากล',
+  '5-3':'วันเสรีภาพสื่อมวลชนโลก',
+  '5-8':'วันกาชาดสากล',
+  '5-10':'วันนกอพยพโลก',
+  '5-15':'วันครอบครัวสากล (UN)',
+  '5-17':'วันโทรคมนาคมโลก / วันต่อต้าน LGBTQ-phobia',
+  '5-20':'วันผึ้งโลก',
+  '5-21':'วันความหลากหลายทางวัฒนธรรม (UN)',
+  '5-22':'วันความหลากหลายทางชีวภาพ',
+  '5-25':'วันแอฟริกา',
+  '5-29':'วันสันติภาพ UN (Peacekeepers Day)',
+  '5-31':'วันงดสูบบุหรี่โลก (WHO)',
+  '6-1':'วันเด็กสากล',
+  '6-4':'วันผู้ลี้ภัยเด็กนานาชาติ',
+  '6-5':'วันสิ่งแวดล้อมโลก (UNEP)',
+  '6-8':'วันมหาสมุทรโลก',
+  '6-12':'วันต่อต้านการใช้แรงงานเด็กโลก',
+  '6-14':'วันบริจาคโลหิตโลก',
+  '6-15':'วันผู้สูงอายุถูกทารุณกรรมโลก',
+  '6-17':'วันต่อต้านการกลายเป็นทะเลทราย',
+  '6-20':'วันผู้ลี้ภัยโลก (UNHCR)',
+  '6-21':'วันโยคะสากล / วันดนตรีโลก',
+  '6-25':'วันต่อต้านการทรมานโลก',
+  '7-11':'วันประชากรโลก (UN)',
+  '7-18':'วันเนลสัน แมนเดลา',
+  '7-28':'วันตับอักเสบโลก (WHO)',
+  '7-30':'วันมิตรภาพสากล / วันต่อต้านค้ามนุษย์',
+  '8-9':'วันชนพื้นเมืองสากล (UN)',
+  '8-12':'วันเยาวชนสากล (UN)',
+  '8-19':'วันมนุษยธรรมโลก',
+  '8-23':'วันรำลึกการค้าทาสสากล (UNESCO)',
+  '9-5':'วันเทเรซาแห่งกัลกัตตา',
+  '9-7':'วันสีฟ้าสากล (UN Blue Day)',
+  '9-8':'วันการรู้หนังสือสากล (UNESCO)',
+  '9-10':'วันป้องกันการฆ่าตัวตายโลก',
+  '9-16':'วันโอโซนโลก',
+  '9-21':'วันสันติภาพสากล (UN)',
+  '9-25':'วันมุ่งสู่เป้าหมาย SDGs',
+  '9-26':'วันภาษายุโรป / วันอาวุธนิวเคลียร์โลก',
+  '9-27':'วันการท่องเที่ยวโลก (UNWTO)',
+  '9-28':'วันสิทธิการรับรู้สากล',
+  '10-1':'วันผู้สูงอายุสากล (UN)',
+  '10-2':'วันอหิงสาสากล (วันคานธี)',
+  '10-5':'วันครูโลก (UNESCO)',
+  '10-9':'วันไปรษณีย์โลก (UPU)',
+  '10-10':'วันสุขภาพจิตโลก (WHO)',
+  '10-11':'วันเด็กหญิงสากล (UN)',
+  '10-13':'วันลดความเสี่ยงจากภัยพิบัติ (UN)',
+  '10-15':'วันล้างมือโลก',
+  '10-16':'วันอาหารโลก (FAO)',
+  '10-17':'วันขจัดความยากจนสากล (UN)',
+  '10-24':'วันสหประชาชาติ (UN Day)',
+  '10-31':'วันออมทรัพย์โลก',
+  '11-6':'วันสิ่งแวดล้อมในสงคราม (UN)',
+  '11-10':'วันสันติภาพ-วิทยาศาสตร์ (UNESCO)',
+  '11-11':'วันสงบศึก / วันทหารผ่านศึก',
+  '11-14':'วันเบาหวานโลก (IDF)',
+  '11-16':'วันความอดทนสากล (UNESCO)',
+  '11-17':'วันนักศึกษาสากล',
+  '11-19':'วันส้วมโลก (UN)',
+  '11-20':'วันเด็กสากล (UNICEF)',
+  '11-21':'วันโทรทัศน์โลก (UN)',
+  '11-25':'วันยุติความรุนแรงต่อสตรีสากล (UN)',
+  '12-1':'วันเอดส์โลก (WHO)',
+  '12-2':'วันต่อต้านการค้าทาส (UN)',
+  '12-3':'วันคนพิการสากล (UN)',
+  '12-5':'วันอาสาสมัครสากล (UN)',
+  '12-9':'วันต่อต้านคอร์รัปชันสากล (UNODC)',
+  '12-10':'วันสิทธิมนุษยชนโลก (UN)',
+  '12-18':'วันผู้อพยพสากล (UN)',
+  '12-20':'วันความสามัคคีของมนุษย์ (UN)'
+};
+
+const today = new Date();
+const grid  = document.getElementById('calendarGrid');
+
+for (let m = 1; m <= 12; m++) {
+  const card = document.createElement('div');
+  card.className = 'month-card';
+
+  // Header
+  const hdr = document.createElement('div');
+  hdr.className = 'month-header';
+  hdr.innerHTML = `<div class="month-name-th">${MONTH_TH[m-1]}</div><div class="month-name-en">${MONTH_EN[m-1]} 2026</div>`;
+  card.appendChild(hdr);
+
+  // DOW row
+  const dowRow = document.createElement('div');
+  dowRow.className = 'dow-row';
+  DOW_TH.forEach((d,i) => {
+    const c = document.createElement('div');
+    c.className = 'dow-cell ' + (i===0?'sun':i===6?'sat':'wd');
+    c.textContent = d;
+    dowRow.appendChild(c);
+  });
+  card.appendChild(dowRow);
+
+  // Days grid
+  const dg = document.createElement('div');
+  dg.className = 'days-grid';
+
+  const firstDay    = new Date(2026, m-1, 1).getDay();
+  const daysInMonth = new Date(2026, m,   0).getDate();
+
+  for (let e = 0; e < firstDay; e++) dg.appendChild(document.createElement('div'));
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dow     = (firstDay + d - 1) % 7;
+    const key     = m + '-' + d;
+    const holName = TH_HOL[key]  || null;
+    const intName = INTL[key]    || null;
+    const isToday = today.getFullYear()===2026 && today.getMonth()===m-1 && today.getDate()===d;
+
+    const cell = document.createElement('div');
+    let cls = 'day-cell ' + (dow===0?'sun':dow===6?'sat':'wd');
+    if (holName && intName) cls += ' is-both';
+    else if (holName)       cls += ' is-hol';
+    else if (intName)       cls += ' is-intl';
+    if (isToday) cls += ' today';
+    cell.className = cls;
+
+    // Number
+    const num = document.createElement('span');
+    num.className = 'day-num';
+    num.textContent = d;
+    cell.appendChild(num);
+
+    // Thai holiday label
+    if (holName) {
+      const lh = document.createElement('div');
+      lh.className = 'lbl-hol';
+      lh.textContent = holName;
+      cell.appendChild(lh);
+    }
+
+    // International label
+    if (intName) {
+      const li = document.createElement('div');
+      li.className = 'lbl-intl';
+      li.textContent = intName;
+      cell.appendChild(li);
+    }
+
+    // Tooltip
+    if (holName || intName) {
+      const tip = document.createElement('div');
+      tip.className = 'tip';
+      let html = '';
+      if (holName) html += '<div class="th">🇹🇭 ' + holName + '</div>';
+      if (intName) html += '<div class="int">🌐 ' + intName + '</div>';
+      tip.innerHTML = html;
+      cell.appendChild(tip);
+    }
+
+    dg.appendChild(cell);
+  }
+
+  card.appendChild(dg);
+  grid.appendChild(card);
+}
+</script>
+</body>
+  </html>
